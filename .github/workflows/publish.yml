@@ -51,7 +51,7 @@ jobs:
       # ── Build ───────────────────────────────────────────────────────────────
 
       - name: Build WASM package
-        run: wasm-pack build --target web --out-dir pkg --release --scope lycheeorg
+        run: wasm-pack build --target web --out-dir pkg --release --scope lychee-org
         working-directory: rust
 
       - name: Run Node smoke test against the built package
