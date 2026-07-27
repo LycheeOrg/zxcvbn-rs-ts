@@ -1,0 +1,40 @@
+[package]
+name = "zxcvbn-wasm"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+authors = ["LycheeOrg"]
+description = "WebAssembly bindings for the zxcvbn-rs password strength estimator"
+homepage = "https://github.com/LycheeOrg/zxcvbn-rs-ts"
+repository = "https://github.com/LycheeOrg/zxcvbn-rs-ts"
+license = "MIT"
+keywords = ["zxcvbn", "wasm", "password", "security"]
+categories = ["wasm", "authentication"]
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+js-sys = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+console_error_panic_hook = { version = "0.1", optional = true }
+
+[dependencies.zxcvbn]
+version = "3.1"
+default-features = false
+features = ["ser"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-Os"]
