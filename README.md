@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/LycheeOrg/zxcvbn-rs-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/LycheeOrg/zxcvbn-rs-ts/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/%40lycheeorg%2Fzxcvbn-wasm)](https://www.npmjs.com/package/@lycheeorg/zxcvbn-wasm)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/LycheeOrg/zxcvbn-rs-ts/badge)](https://scorecard.dev/viewer/?uri=github.com/LycheeOrg/zxcvbn-rs-ts)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A WebAssembly build of [`zxcvbn-rs`](https://github.com/shssoichiro/zxcvbn-rs) — the Rust
@@ -98,9 +99,18 @@ four attack scenarios: `online_throttling_100_per_hour`,
 ## Repository layout
 
 ```
-rust/           the wasm-bindgen wrapper crate around the `zxcvbn` crate
-  src/lib.rs    the entire public API surface (one function, plus TS type declarations)
-  test/         a Node smoke test run against the built package in CI
+rust/               the wasm-bindgen wrapper crate around the `zxcvbn` crate
+  src/lib.rs        the entire public API surface (one function, plus TS type declarations)
+  test/             a Node smoke test run against the built package in CI
+.github/
+  workflows/
+    ci.yml                  tests, lints, wasm build, smoke test on every push/PR
+    publish.yml             builds and publishes to npm on a GitHub Release
+    dependency-review.yml   flags newly-introduced vulnerable dependencies on PRs
+    scorecard.yml           OpenSSF Scorecard supply-chain analysis
+  dependabot.yml    keeps GitHub Actions and Cargo dependencies up to date
+  CODEOWNERS        default reviewers for pull requests
+  FUNDING.yml       sponsor button configuration
 ```
 
 The published npm package **is** the `wasm-pack` build output (`rust/pkg`); there's no
@@ -131,6 +141,12 @@ Pushing a GitHub Release with a tag like `v1.2.3` triggers
 package, stamps its version from the tag, and publishes
 `@lycheeorg/zxcvbn-wasm@1.2.3` to npm with provenance. This requires an `NPM_TOKEN`
 repository secret with publish rights.
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for how to report a vulnerability. Every PR is checked
+by [Dependency Review](.github/workflows/dependency-review.yml) and the repo is
+continuously assessed by [OpenSSF Scorecard](.github/workflows/scorecard.yml).
 
 ## Credits & license
 
