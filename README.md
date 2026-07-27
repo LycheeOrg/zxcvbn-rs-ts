@@ -134,14 +134,6 @@ wasm-pack build --target web --out-dir pkg --release --scope lycheeorg
 node test/smoke.mjs                                           # exercises the built package
 ```
 
-## Releasing
-
-Pushing a GitHub Release with a tag like `v1.2.3` triggers
-[`.github/workflows/publish.yml`](.github/workflows/publish.yml), which builds the Wasm
-package, stamps its version from the tag, and publishes
-`@lycheeorg/zxcvbn-wasm@1.2.3` to npm with provenance. This requires an `NPM_TOKEN`
-repository secret with publish rights.
-
 ## Security
 
 See [SECURITY.md](SECURITY.md) for how to report a vulnerability. Every PR is checked
