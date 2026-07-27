@@ -11,7 +11,7 @@ A clear and concise description of what's wrong.
 
 **To reproduce**
 ```ts
-import init, { zxcvbn } from "@lycheeorg/zxcvbn-wasm";
+import init, { zxcvbn } from "@lychee-org/zxcvbn-wasm";
 
 await init();
 const result = zxcvbn("...", []);
@@ -19,7 +19,7 @@ const result = zxcvbn("...", []);
 What did you expect `result` to look like, and what did you actually get?
 
 **Environment**
-- `@lycheeorg/zxcvbn-wasm` version:
+- `@lychee-org/zxcvbn-wasm` version:
 - Runtime: (browser + version / Node version)
 - Bundler (if any):
 

@@ -1,7 +1,7 @@
 # zxcvbn-wasm
 
 [![CI](https://github.com/LycheeOrg/zxcvbn-rs-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/LycheeOrg/zxcvbn-rs-ts/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/%40lycheeorg%2Fzxcvbn-wasm)](https://www.npmjs.com/package/@lycheeorg/zxcvbn-wasm)
+[![npm](https://img.shields.io/npm/v/%40lychee-org%2Fzxcvbn-wasm)](https://www.npmjs.com/package/@lychee-org/zxcvbn-wasm)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/LycheeOrg/zxcvbn-rs-ts/badge)](https://scorecard.dev/viewer/?uri=github.com/LycheeOrg/zxcvbn-rs-ts)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -25,7 +25,7 @@ dictionaries and pattern matching as the Rust ecosystem, in the browser or in No
 ## Installation
 
 ```sh
-npm install @lycheeorg/zxcvbn-wasm
+npm install @lychee-org/zxcvbn-wasm
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ for you automatically.
 ### Browser / bundler
 
 ```ts
-import init, { zxcvbn } from "@lycheeorg/zxcvbn-wasm";
+import init, { zxcvbn } from "@lychee-org/zxcvbn-wasm";
 
 await init(); // fetches and instantiates the .wasm file once
 
@@ -60,9 +60,9 @@ Node. Read the file yourself and hand the bytes to `init()`:
 
 ```ts
 import { readFile } from "node:fs/promises";
-import init, { zxcvbn } from "@lycheeorg/zxcvbn-wasm";
+import init, { zxcvbn } from "@lychee-org/zxcvbn-wasm";
 
-const wasmUrl = import.meta.resolve("@lycheeorg/zxcvbn-wasm/zxcvbn_wasm_bg.wasm");
+const wasmUrl = import.meta.resolve("@lychee-org/zxcvbn-wasm/zxcvbn_wasm_bg.wasm");
 const wasmBytes = await readFile(new URL(wasmUrl));
 await init({ module_or_path: wasmBytes });
 
@@ -130,7 +130,7 @@ cargo test                                                    # unit tests
 cargo clippy --all-targets -- -D warnings
 cargo fmt --check
 
-wasm-pack build --target web --out-dir pkg --release --scope lycheeorg
+wasm-pack build --target web --out-dir pkg --release --scope lychee-org
 node test/smoke.mjs                                           # exercises the built package
 ```
 

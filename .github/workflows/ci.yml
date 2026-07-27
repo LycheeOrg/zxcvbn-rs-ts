@@ -76,7 +76,7 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - name: Build WASM package
-        run: wasm-pack build --target web --out-dir pkg --release --scope lycheeorg
+        run: wasm-pack build --target web --out-dir pkg --release --scope lychee-org
         working-directory: rust
 
       - name: Smoke test the built package
